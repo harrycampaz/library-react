@@ -3,23 +3,19 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Link } from 'react-router-dom';
-import Spinner from '../../layout/ui/Spinner';
 
 const Suscriptores = ({suscriptores}) => {
 
     
 
-    if(!suscriptores) return <Spinner/>
+    if(!suscriptores) return <h1>Cargando ...</h1>
     console.log(suscriptores);
 
 
     return (
       <div className="row">
           <div className="col-md-12 mb-4">
-              <Link to ="/add-suscriptores" className ="btn btn-primary">
               
-              <i className="fas fa-plus"></i> Nuevo Suscriptor
-              </Link>
           </div>
 
           <div className="col-md-8">

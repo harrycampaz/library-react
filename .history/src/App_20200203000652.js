@@ -6,13 +6,8 @@ import EditSuscriptores from './components/suscriptores/EditSuscriptores';
 import Suscriptor from './components/suscriptores/Suscriptor';
 import Navbar from './layout/ui/Navbar';
 
-import store from "./store";
-
-import { Provider } from "react-redux";
-
 function App() {
   return (
-    <Provider store = {store}>
    <Router>
      <Navbar/>
      <div className="container">
@@ -24,8 +19,28 @@ function App() {
      </Switch>
      </div>
    </Router>
-   </Provider>
   );
 }
 
 export default App;
+
+// <!-- The core Firebase JS SDK is always required and must be listed first -->
+// <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+
+// <!-- TODO: Add SDKs for Firebase products that you want to use
+//      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+// <script>
+//   // Your web app's Firebase configuration
+//   var firebaseConfig = {
+//     apiKey: "AIzaSyDzPSVs71lTBKlEEe46uaOTDO_xNUC-QO4",
+//     authDomain: "friendlychat2-16007.firebaseapp.com",
+//     databaseURL: "https://friendlychat2-16007.firebaseio.com",
+//     projectId: "friendlychat2-16007",
+//     storageBucket: "friendlychat2-16007.appspot.com",
+//     messagingSenderId: "7642518737",
+//     appId: "1:7642518737:web:651b49f1e1d7c68fa061f0"
+//   };
+//   // Initialize Firebase
+//   firebase.initializeApp(firebaseConfig);
+// </script>
