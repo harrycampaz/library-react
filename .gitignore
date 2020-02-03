@@ -3,6 +3,8 @@
 
 /src/config
 
+/.history
+
 # dependencies
 /node_modules
 /.pnp
