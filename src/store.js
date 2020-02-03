@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
 
 const rrfConfig = {
 
-    userProfile: 'users',
+    userProfile: 'users', 
     useFirebaseForProfile: true
 }
 
