@@ -10,14 +10,12 @@ function App() {
   return (
    <Router>
      <Navbar/>
-     <div className="container">
      <Switch>
        <Route exact path ="/suscriptores" component={Suscriptores}/>
        <Route exact path = "/suscriptores/:id" component ={Suscriptor}/>
        <Route exact path ="/add-suscriptores" component={AddSuscriptores}/>
        <Route exact path ="/suscriptores/edit/:id" component={EditSuscriptores}/>
      </Switch>
-     </div>
    </Router>
   );
 }
