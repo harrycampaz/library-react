@@ -31,7 +31,7 @@ const Suscriptores = ({ suscriptores, firestore }) => {
     return (
         <div className="row">
             <div className="col-md-12 mb-4">
-                <Link to="/add-suscriptores" className="btn btn-primary">
+                <Link to="/add-suscriptores" className="btn btn-secondary">
 
                     <i className="fas fa-plus"></i> Nuevo Suscriptor
               </Link>
@@ -56,7 +56,7 @@ const Suscriptores = ({ suscriptores, firestore }) => {
                         <tr key={suscriptor.id}>
                             <td>{suscriptor.nombre}</td>
                             <td>{suscriptor.carrera}</td>
-                            <td><Link to={`suscriptores/${suscriptor.id}`} className="btn btn-success btn-block">
+                            <td><Link to={`suscriptores/${suscriptor.id}`} className="btn btn-primary btn-block">
                                 <i className="fas fa-angle-double-right"></i> Mas Info
                               </Link>
 

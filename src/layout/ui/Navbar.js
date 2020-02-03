@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 function Navbar(props) {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
-        <a className="navbar-brand" href="#">Admin</a>
+      
+        <Link to ={"/"}  className="navbar-brand">Biblioteca</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -14,7 +15,7 @@ function Navbar(props) {
           <ul className="navbar-nav mr-auto">
            
             <li className="nav-item">
-              <Link to ={"/suscriptores"}  className="nav-link">suscriptores</Link>
+              <Link to ={"/suscriptores"}  className="nav-link">Suscriptores</Link>
             </li>
             <li className="nav-item">
               <Link to ={"/"}  className="nav-link">Libros</Link>
