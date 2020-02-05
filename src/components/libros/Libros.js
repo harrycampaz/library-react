@@ -7,7 +7,18 @@ import Spinner from '../../layout/ui/Spinner';
 
 import PropTypes from "prop-types";
 
-const Libros = ({ libros }) => {
+const Libros = ({ libros, firestore }) => {
+
+    const deleteLibro = id => {
+
+        firestore.delete({
+            collection: 'libros',
+            doc: id
+        }).then(() => {
+            console.log("Eliminado id: ", id);
+        })
+  
+      }
 
     if (!libros) return <Spinner />
     return (
@@ -54,7 +65,7 @@ const Libros = ({ libros }) => {
                        
                         </Link>
 
-                        <button type="button" className="btn btn-danger btn-block">
+                        <button type="button" className="btn btn-danger btn-block"  onClick={ () => deleteLibro(libro.id)}> 
 
                             <i className="fas fa-trash-alt"></i> {' '}
                             Borrar

@@ -34,9 +34,6 @@ class EditSuscriptores extends Component {
             doc: suscriptor.id
         }, suscriptorActualizado).then(history.push('/suscriptores'))
     }
-
-
-
    
     
     render() {
