@@ -11,6 +11,7 @@ import Libro from "./components/libros/Libro";
 import AddLibro from "./components/libros/AddLibro";
 import EditLibro from "./components/libros/EditLibro";
 import PrestamoLibro from "./components/libros/PrestamoLibro";
+import Login from "./components/auth/Login";
 
 import store from "./store";
 
@@ -36,7 +37,7 @@ function App() {
        <Route exact path ="/add-suscriptores" component={AddSuscriptores}/>
        <Route exact path ="/suscriptores/edit/:id" component={EditSuscriptores}/>
 
-
+       <Route exact path ="/login" component={Login}/>
 
      </Switch>
      </div>

@@ -4,7 +4,10 @@ import { reduxFirestore, firestoreReducer } from "redux-firestore";
 
 import firebase from "firebase/app";
 
+
+
 import "firebase/firestore" ;
+import "firebase/auth";
 import  {environment}  from "./config/environment";
 
 const firebaseConfig = environment.firebaseConfig;
