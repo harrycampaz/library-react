@@ -4,6 +4,8 @@ import { reduxFirestore, firestoreReducer } from "redux-firestore";
 
 import firebase from "firebase/app";
 
+import buscarUsuarioReducer from "./reducers/buscarUsuarioReducer";
+
 
 
 import "firebase/firestore" ;
@@ -29,7 +31,8 @@ const createStoreWithFirebase = compose(
 
 const rootReducer = combineReducers({
     firebase: firebaseReducer,
-    firestore: firestoreReducer
+    firestore: firestoreReducer,
+    usuario: buscarUsuarioReducer
 })
 
 const initialState = {};

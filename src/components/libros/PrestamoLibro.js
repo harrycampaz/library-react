@@ -7,12 +7,12 @@ import Spinner from '../../layout/ui/Spinner';
 import PropTypes from 'prop-types';
 import FichaSuscriptor from '../suscriptores/FichaSuscriptor';
 
+import { buscarUsuario } from "../../actions/buscarUsuarioActions";
 class PrestamoLibro extends Component {
 
     state = {
         noResult: false,
         busqueda: '',
-        result: {}
     }
     readData = e => {
         this.setState({
@@ -24,7 +24,7 @@ class PrestamoLibro extends Component {
         e.preventDefault();
 
         const { busqueda } = this.state;
-        const { firestore } = this.props;
+        const { firestore, buscarUsuario } = this.props;
 
         const collection = firestore.collection('suscriptores');
 
@@ -35,15 +35,17 @@ class PrestamoLibro extends Component {
 
             if (onResponse.empty) {
 
+                buscarUsuario({})
+
                 this.setState({
                     noResult: true,
-                    result: {}
                 })
             } else {
                 const datos = onResponse.docs[0];
+
+                buscarUsuario(datos.data())
                 this.setState({
-                    noResult: false,
-                    result: datos.data()
+                    noResult: false
                 })
 
             }
@@ -53,11 +55,11 @@ class PrestamoLibro extends Component {
     }
 
     solicitarPrestamo = () => {
-        const {result} = this.state;
-        result.fecha_solicitud = new Date().toDateString();
+        const {usuario} = this.props;
+        usuario.fecha_solicitud = new Date().toDateString();
 
         const libroActualizado = this.props.libro;
-        libroActualizado.prestados.push(result);
+        libroActualizado.prestados.push(usuario);
 
         const {firestore, history, libro} = this.props;
 
@@ -74,12 +76,13 @@ class PrestamoLibro extends Component {
 
         if (!libro) return <Spinner />
 
-        const { noResult, result } = this.state;
+        const { noResult } = this.state;
+        const { usuario } = this.props;
 
         let fichaAlumno, btnSolicitar;
 
-        if (result.nombre) {
-            fichaAlumno = <FichaSuscriptor alumno={result} />
+        if (usuario.nombre) {
+            fichaAlumno = <FichaSuscriptor alumno={usuario} />
 
             btnSolicitar = <button type="button" className="btn btn-secondary btn-block" onClick={this.solicitarPrestamo}>
 
@@ -141,7 +144,10 @@ export default compose(
         collection: 'libros',
         storeAs: 'libro',
         doc: props.match.params.id
-    }]), connect(({ firestore: { ordered } }, props) => ({
-        libro: ordered.libro && ordered.libro[0]
-    }))
+    }]), connect(({ firestore: { ordered }, usuario  }, props) => ({
+        libro: ordered.libro && ordered.libro[0],
+        usuario
+    }), {
+        buscarUsuario
+    })
 )(PrestamoLibro);
