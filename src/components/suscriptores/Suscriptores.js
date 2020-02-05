@@ -54,7 +54,7 @@ const Suscriptores = ({ suscriptores, firestore }) => {
                 <tbody>
                     {suscriptores.map(suscriptor => (
                         <tr key={suscriptor.id}>
-                            <td>{suscriptor.nombre}</td>
+<td>{suscriptor.nombre} {suscriptor.apellido}</td>
                             <td>{suscriptor.carrera}</td>
                             <td><Link to={`suscriptores/${suscriptor.id}`} className="btn btn-primary btn-block">
                                 <i className="fas fa-angle-double-right"></i> Mas Info

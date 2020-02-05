@@ -51,7 +51,7 @@ class EditLibro extends Component {
             </div>
             <div className="col-12">
                 <h2> <i className="fas fa-book">
-                </i>{" "} Nuevo libro</h2>
+                </i>{" "} Editar libro</h2>
 
                 <div className="row justify-content-center">
 
