@@ -55,13 +55,23 @@ class PrestamoLibro extends Component {
     }
 
     solicitarPrestamo = () => {
-        const {usuario} = this.props;
+        const {usuario, firestore, history, libro} = this.props;
         usuario.fecha_solicitud = new Date().toDateString();
 
-        const libroActualizado = this.props.libro;
-        libroActualizado.prestados.push(usuario);
+        let prestados = [];
+        prestados = [...this.props.libro.prestados, usuario];
 
-        const {firestore, history, libro} = this.props;
+    
+        const libroActualizado = {...this.props.libro};
+        // libroActualizado.prestados.push(usuario);
+
+        delete libroActualizado.prestados;
+
+        libroActualizado.prestados = prestados;
+
+        console.log(libroActualizado);
+        
+
 
         firestore.update({
             collection: 'libros',
@@ -69,6 +79,8 @@ class PrestamoLibro extends Component {
            
         }, libroActualizado).then(history.push('/'));
     }
+
+   
 
     render() {
 
@@ -91,6 +103,13 @@ class PrestamoLibro extends Component {
         } else {
             fichaAlumno = null;
             btnSolicitar = null;
+        }
+
+        let msgResult = "";
+        if(noResult){
+             msgResult = <div className="alert alert-danger">No hay resultado</div>
+        }else {
+            msgResult = null;
         }
 
         return (
@@ -123,6 +142,8 @@ class PrestamoLibro extends Component {
 
                             {fichaAlumno}
                             {btnSolicitar}
+
+                            {msgResult}
 
                         </div>
                     </div>
